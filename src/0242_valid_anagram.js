@@ -7,7 +7,7 @@ var isAnagram = function (s, t) {
   if (s.length !== t.length) return false;
 
   const getCode = (char) => char.charCodeAt() - 97;
-  const count = new Array(26).fill(0);
+  const count = new Uint16Array(26);
 
   for (const char of s) {
     count[getCode(char)] += 1;

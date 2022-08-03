@@ -18,15 +18,14 @@ var solution = function (isBadVersion) {
    * @return {integer} The first bad version
    */
   return function (n) {
-    let min = 1, max = n;
+    let min = 1,
+      max = n;
+
     while (min <= max) {
       const pick = Math.trunc((min + max) / 2);
-      if (isBadVersion(pick)) {
-        max = pick - 1;
-      } else {
-        min = pick + 1;
-      }
+      isBadVersion(pick) ? max = pick - 1 : min = pick + 1;
     }
+
     return min;
   };
 };

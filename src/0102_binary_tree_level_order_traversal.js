@@ -12,15 +12,16 @@
  */
 var levelOrder = function (root) {
   const result = [];
-  const stack = [{ depth: 0, node: root }];
+  const stack = [[0, root]];
 
   while (stack.length) {
-    let { depth, node } = stack.pop();
+    const [depth, node] = stack.pop();
     if (!node) continue;
+
     if (!result[depth]) result[depth] = [];
     result[depth].push(node.val);
-    depth += 1;
-    stack.push({ depth, node: node.right }, { depth, node: node.left });
+
+    stack.push([depth + 1, node.right], [depth + 1, node.left]);
   }
 
   return result;

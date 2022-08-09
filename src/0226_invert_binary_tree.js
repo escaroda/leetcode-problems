@@ -17,9 +17,7 @@ var invertTree = function (root) {
     const node = stack.pop();
     if (!node) continue;
 
-    const left = node.left;
-    node.left = node.right;
-    node.right = left;
+    [node.left, node.right] = [node.right, node.left];
     stack.push(node.right, node.left);
   }
 

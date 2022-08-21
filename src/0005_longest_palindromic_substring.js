@@ -3,8 +3,6 @@
  * @return {string}
  */
 var longestPalindrome = function (s) {
-  let result = '';
-
   const getPalindrome = (i, j) => {
     while (i > -1 && j < s.length && s[i] === s[j]) {
       i--;
@@ -13,6 +11,7 @@ var longestPalindrome = function (s) {
     return s.slice(i + 1, j);
   };
 
+  let result = '';
   for (let i = 0; i < s.length; i++) {
     const p1 = getPalindrome(i, i),
       p2 = getPalindrome(i, i + 1);
